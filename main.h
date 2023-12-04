@@ -50,7 +50,7 @@ int _printf(const char *format, ...);
 int print_char(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 int print_string(va_list types, char buffer[],
-	int flags, int width, int precision, int size)
+	int flags, int width, int precision, int size);
 int print_percent(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
@@ -106,9 +106,7 @@ char buffer[],
 
 int is_printable(char);
 int append_hexa_code(char, char[], int);
-int is_digit(char);
 long int convert_size_unsgnd(unsigned long int num, int size);
 long int convert_size_number(long int num, int size);
 int is_digit(char);
-
 #endif /* MAIN_H */
