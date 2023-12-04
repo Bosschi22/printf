@@ -39,7 +39,7 @@ int print_pointer(va_list types, char buffer[], int flags,
 		ext_c = '+', lnth++;
 	else if (flags & F_SPACE)
 		ext_c = ' ', lnth++;
-		idx++;
+	idx++;
 	/*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
 	return (write_pointer(buffer, idx, lnth, width, flags,
 				padd_ing, ext_c, padding_begin));

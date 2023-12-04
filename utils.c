@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * is_printable - entry point
  * @c: Char to be evaluated.
@@ -11,6 +12,7 @@ int is_printable(char c)
 		return (1);
 	return (0);
 }
+
 /**
  * append_hexa_code - entry lvl
  * @buffer: Array of chars.
@@ -30,6 +32,7 @@ char map_it[] = "0123456789ABCDEF";
 	buffer[i] = map_it[ascii_code % 16];
 	return (3);
 }
+
 /**
  * is_digit - entry point
  * @c: Char to be evaluated
@@ -42,6 +45,7 @@ int is_digit(char c)
 		return (1);
 	return (0);
 }
+
 /**
  * convert_size_number - Casts a number
  * @num: Number to be casted.
@@ -57,6 +61,7 @@ long int convert_size_number(long int num, int size)
 		return ((short)num);
 	return ((int)num);
 }
+
 /**
  * convert_size_unsgnd - entry point
  * @num: Number to be casted

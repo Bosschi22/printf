@@ -26,7 +26,7 @@ char pardd = ' ';
 	buffer[i] = '\0';
 	if (width > 1)
 	{
-		buffer[BUFF_SIZE - 1] = '\0'
+		buffer[BUFF_SIZE - 1] = '\0';
 			for (i = 0; i < width - 1; i++)
 			buffer[BUFF_SIZE - i - 2] = pardd;
 		if (flags & F_MINUS)
@@ -55,10 +55,11 @@ char pardd = ' ';
 int write_number(int is_negative, int ind, char buffer[],
 		int flags, int width, int precision, int size)
 {
-int length = BUFF_SIZE - ind - 1;
-char pardd = ' ', extra_ch = 0;
-	UNUSED(size)
-		if ((flags & F_ZERO) && !(flags & F_MINUS))
+	int length = BUFF_SIZE - ind - 1;
+	char pardd = ' ', extra_ch = 0;
+
+	UNUSED(size);
+	if ((flags & F_ZERO) && !(flags & F_MINUS))
 		pardd = '0';
 	if (is_negative)
 		extra_ch = '-';
@@ -151,7 +152,7 @@ char pardd = ' ';
 	if (precision == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0')
 		return (0); /* printf(".0d", 0)  no char is printed */
 	if (precision > 0 && precision < length)
-		padd = ' ';
+		pardd = ' ';
 	while (precision > length)
 	{
 		buffer[--ind] = '0';
@@ -191,7 +192,8 @@ char pardd = ' ';
 int write_pointer(char buffer[], int ind, int length,
 		int width, int flags, char padd, char extra_c, int padd_start)
 {
-int iv;
+	int iv;
+
 	if (width > length)
 	{
 		for (iv = 3; iv < width - length + 3; iv++)
@@ -203,7 +205,7 @@ int iv;
 			buffer[--ind] = '0';
 			if (extra_c)
 				buffer[--ind] = extra_c;
-			return (write(1, &buffer[ind], length) + write(1, &buffer[3], i - 3));
+			return (write(1, &buffer[ind], length) + write(1, &buffer[3], iv - 3));
 		}
 		else if (!(flags & F_MINUS) && padd == ' ')/* extra char to left of buffer */
 		{
@@ -211,7 +213,7 @@ int iv;
 			buffer[--ind] = '0';
 			if (extra_c)
 				buffer[--ind] = extra_c;
-			return (write(1, &buffer[3], i - 3) + write(1, &buffer[ind], length));
+			return (write(1, &buffer[3], iv - 3) + write(1, &buffer[ind], length));
 		}
 		else if (!(flags & F_MINUS) && padd == '0')/* extra char to left of padd */
 		{
@@ -219,7 +221,7 @@ int iv;
 				buffer[--padd_start] = extra_c;
 			buffer[1] = '0';
 			buffer[2] = 'x';
-			return (write(1, &buffer[padd_start], i - padd_start) +
+			return (write(1, &buffer[padd_start], iv - padd_start) +
 				write(1, &buffer[ind], length - (1 - padd_start) - 2));
 		}
 	}

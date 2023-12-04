@@ -115,7 +115,7 @@ int print_int(va_list types, char buffer[], int flags,
 
 	num = convert_size_number(num, size);
 	if (num == 0)
-		buffer[i--] = '0';
+		buffer[ind--] = '0';
 	buffer[BUFF_SIZE - 1] = '\0';
 	number = (unsigned long int)num;
 	if (num < 0)
